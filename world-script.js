@@ -37,9 +37,41 @@ function activateScene(event) {
 }
 
 Hooks.once('init', async function() {
-    console.log('=============================== Init ===============================');
-    // Setting enrichers
-    console.log('=============================== Setting up world enrichers ===============================');
+
+CONFIG.TextEditor.enrichers.push(
+    {
+        pattern: /@ViewScene\[(.+?)\]/gm,
+        enricher: async (match, options) => {
+
+			const arr = match[1].split('.');
+            let id = '';
+
+			if (arr.length == 2 && arr[0] == 'Scene')
+				id = arr[1];
+			else
+				id = arr[0];
+
+            const scene = game.scenes.get(id);
+            const doc = document.createElement("span");
+            const myData = `<a class="control viewscene" data-scene-id="${id}" data-tooltip="View scene" aria-describedby="tooltip"><b>${scene?.name}</b></a>`;
+            doc.innerHTML = myData;
+            return doc;
+        }
+    });
+
+    $(document).on("click", ".viewscene", viewScene);
+});
+
+function viewScene(event) {
+    event.preventDefault();
+    const id = event.currentTarget.getAttribute("data-scene-id");
+    if (!id) return;
+	const scene = game.scenes.get(id);
+	if (scene)
+		scene.view();
+}
+
+Hooks.once('init', async function() {
 	
 CONFIG.TextEditor.enrichers.push(
     {
