@@ -1,8 +1,5 @@
 {
   "id": "post-apocalypse",
-  "esmodules": [
-    "world-script.js"
-  ],
   "title": "Further Adventures",
   "version": "1.0.0",
   "compatibility": {
