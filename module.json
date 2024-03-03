@@ -23,8 +23,16 @@
       }
     }
   ],
-	"version": "1.0.5",
-	"download": "https://github.com/flyingsquad/post-apocalypse/archive/refs/tags/v1.0.5.zip",
-	"url": "https://github.com/flyingsquad/post-apocalypse",
-	"manifest": "https://raw.githubusercontent.com/flyingsquad/post-apocalypse/main/module.json"
+  "version": "1.0.6",
+  "download": "https://github.com/flyingsquad/post-apocalypse/archive/refs/tags/v1.0.6.zip",
+  "url": "https://github.com/flyingsquad/post-apocalypse",
+  "manifest": "https://raw.githubusercontent.com/flyingsquad/post-apocalypse/main/module.json",
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system"
+      }
+    ]
+  }
 }
